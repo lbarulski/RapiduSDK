@@ -1,0 +1,21 @@
+{
+	"name": "lbarulski/rapidu-sdk",
+	"description": "Unofficial rapidu.net SDK",
+	"minimum-stability": "stable",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Łukasz Barulski",
+			"email": "tracerout@yahoo.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"LB\\Rapidu\\": "src/"
+		}
+	},
+	"require": {
+		"php": ">=5.4",
+		"guzzle/guzzle": "3.9.*@dev"
+	}
+}

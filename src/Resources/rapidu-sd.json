@@ -1,0 +1,80 @@
+{
+	"name": "Rapidu",
+	"apiVersion": "beta",
+	"baseUrl": "http://rapidu.net/api/",
+	"description": "Rapidu API",
+	"operations": {
+		"UploadServer": {
+			"httpMethod": "POST",
+			"uri": "getUploadServer/",
+			"responseClass": "LB\\Rapidu\\Response\\UploadServer",
+			"deprecated": false,
+			"parameters": {
+				"login": {
+					"location": "postField",
+					"description": "login",
+					"required": true
+				},
+				"password": {
+					"location": "postField",
+					"description": "password",
+					"required": true
+				}
+			}
+		},
+		"AccountDetails": {
+			"httpMethod": "POST",
+			"uri": "getAccountDetails/",
+			"responseClass": "LB\\Rapidu\\Response\\AccountDetails",
+			"deprecated": false,
+			"parameters": {
+				"login": {
+					"location": "postField",
+					"description": "login",
+					"required": true
+				},
+				"password": {
+					"location": "postField",
+					"description": "password",
+					"required": true
+				}
+			}
+		},
+		"FileDetails": {
+			"httpMethod": "POST",
+			"uri": "getFileDetails/",
+			"responseClass": "LB\\Rapidu\\Response\\FileDetails",
+			"deprecated": false,
+			"parameters": {
+				"id": {
+					"location": "postField",
+					"description": "file id",
+					"required": true
+				}
+			}
+		},
+		"FileDownload": {
+			"httpMethod": "POST",
+			"uri": "getFileDownload/",
+			"responseClass": "LB\\Rapidu\\Response\\FileDownload",
+			"deprecated": false,
+			"parameters": {
+				"login": {
+					"location": "postField",
+					"description": "login",
+					"required": true
+				},
+				"password": {
+					"location": "postField",
+					"description": "password",
+					"required": true
+				},
+				"id": {
+					"location": "postField",
+					"description": "file id",
+					"required": true
+				}
+			}
+		}
+	}
+}
