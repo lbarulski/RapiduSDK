@@ -3,7 +3,6 @@ RapiduSDK
 Unofficial rapidu.net SDK
 
 ## TODO:
-- upload
 - tests
 
 ## Composer installation
@@ -29,4 +28,13 @@ $fileDetails = $rapidu->getFileDetails('FILE_ID');
 $rapidu = new LB\Rapidu\RapiduClient('LOGIN', 'PASSWORD');
 
 $fileDownload = $rapidu->getFileDownload('FILE_ID');
+```
+
+### File Upload
+```php
+$rapidu = new LB\Rapidu\RapiduClient('LOGIN', 'PASSWORD');
+
+$uploadServer = $rapidu->getUploadServer();
+
+$url = $rapidu->upload($uploadServer, '/path/to/file');
 ```

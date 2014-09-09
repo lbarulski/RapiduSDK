@@ -78,12 +78,24 @@ class RapiduClient
 	}
 
 	/**
-	 * @throws \RuntimeException - not implemented
+	 * @param UploadServer 	$uploadServer
+	 * @param string 		$filePath
+	 *
+	 * @throws \InvalidArgumentException - file is not readable
+	 * @return string
 	 */
-	public function upload()
+	public function upload(UploadServer $uploadServer, $filePath)
 	{
-		// TODO: Implement upload() method.
-		throw new \RuntimeException('Not implemented yet');
+		if (false === is_readable($filePath))
+		{
+			throw new \InvalidArgumentException(sprintf('File "%s" is not readable!', $filePath));
+		}
+
+		$command = $this->getClient()->getCommand('Upload', ['session' => $uploadServer->getSessionId(), 'files' => '@' . $filePath]);
+		$command->prepare();
+		$command->getRequest()->setUrl($uploadServer->getServerId());
+
+		return $command->execute()->getBody(true);
 	}
 
 	/**

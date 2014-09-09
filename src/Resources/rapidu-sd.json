@@ -22,6 +22,22 @@
 				}
 			}
 		},
+		"Upload": {
+			"httpMethod": "POST",
+			"deprecated": false,
+			"parameters": {
+				"files": {
+					"location": "postFile",
+					"description": "files",
+					"required": true
+				},
+				"session": {
+					"location": "postField",
+					"description": "session",
+					"required": true
+				}
+			}
+		},
 		"AccountDetails": {
 			"httpMethod": "POST",
 			"uri": "getAccountDetails/",
