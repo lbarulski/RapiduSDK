@@ -16,6 +16,7 @@
 	},
 	"require": {
 		"php": ">=5.4",
-		"guzzle/guzzle": "3.9.*@dev"
+		"guzzle/guzzle": "3.9.*@dev",
+		"phpunit/phpunit": "4.2.5"
 	}
 }
