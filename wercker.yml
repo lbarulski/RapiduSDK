@@ -2,6 +2,9 @@ box: wercker/php
 build:
     steps:
       - script:
+          name: Update default timezome
+          code: echo 'date.timezone = "Europe/Warsaw"' >> $HOME/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+      - script:
           name: install dependencies
           code: composer install --no-interaction --prefer-source
       - script:
