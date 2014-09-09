@@ -86,7 +86,7 @@ class AccountDetails extends BaseResponse
 	 */
 	public function getAmount()
 	{
-		return $this->userAmount;
+		return (float) $this->userAmount;
 	}
 
 	/**
@@ -94,7 +94,7 @@ class AccountDetails extends BaseResponse
 	 */
 	public function getFilesNumber()
 	{
-		return $this->userFileNum;
+		return (int) $this->userFileNum;
 	}
 
 	/**
@@ -102,7 +102,7 @@ class AccountDetails extends BaseResponse
 	 */
 	public function getFilesSize()
 	{
-		return $this->userFileSize;
+		return (int) $this->userFileSize;
 	}
 
 	/**
