@@ -1,9 +1,6 @@
-RapiduSDK
+RapiduSDK [![wercker status](https://app.wercker.com/status/83180b14be54bfb8d1f1e74ec0cb2eae/s/master "wercker status")](https://app.wercker.com/project/bykey/83180b14be54bfb8d1f1e74ec0cb2eae)
 =========
 Unofficial rapidu.net SDK
-
-## TODO:
-- tests
 
 ## Composer installation
 `"lbarulski/rapidu-sdk": "dev-master"`
