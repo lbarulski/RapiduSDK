@@ -9,6 +9,8 @@ use Guzzle\Http\Message\MessageInterface;
 use Guzzle\Service\Description\ServiceDescription;
 use LB\Rapidu\RapiduClient;
 use LB\Rapidu\Response\AccountDetails;
+use LB\Rapidu\Response\FileDetails;
+use LB\Rapidu\Response\FileDownload;
 use LB\Rapidu\Response\UploadServer;
 
 class RapiduClientTest extends PHPUnit_Framework_TestCase
@@ -45,6 +47,49 @@ class RapiduClientTest extends PHPUnit_Framework_TestCase
 		$response = $rapiduClient->getAccountDetails();
 
 		$this->assertEquals($expectedResponse, $response);
+	}
+
+	public function testFileDetails()
+	{
+		$expectedResponse = new FileDetails([
+			'fileStatus'	=> 1,
+			'fileId' 		=> '666',
+			'fileName' 		=> 'Some.File.rar',
+			'fileDesc' 		=> 'some description',
+			'fileSize' 		=> '73456834',
+			'fileUrl' 		=> 'http://rapidu.net/666/Some.File.rar',
+		]);
+
+		$response = new Response(200, null, '{"0":{"fileStatus":1,"fileId":"666","fileName":"Some.File.rar","fileDesc":"some description","fileSize":"73456834","fileUrl":"http:\/\/rapidu.net\/666\/Some.File.rar"}}');
+		$rapiduClient = $this->getRapiduClientWithEnqueuedResponses([$response]);
+		$response = $rapiduClient->getFileDetails('');
+
+		$this->assertEquals($expectedResponse, $response);
+	}
+
+	public function testFileDownload()
+	{
+		$expectedResponse = new FileDownload([
+			'fileLocation' => 'http://a666.rapiduservers.net/download/666xxx666xxx666/Some.File.rar',
+		]);
+
+		$response = new Response(200, null, '{"fileLocation":"http:\/\/a666.rapiduservers.net\/download\/666xxx666xxx666\/Some.File.rar"}');
+		$rapiduClient = $this->getRapiduClientWithEnqueuedResponses([$response]);
+		$response = $rapiduClient->getFileDownload('');
+
+		$this->assertEquals($expectedResponse, $response);
+	}
+
+	public function testUpload()
+	{
+		$response = new Response(200, null, 'http://rapidu.net/666/Some.File.rar');
+		$rapiduClient = $this->getRapiduClientWithEnqueuedResponses([$response]);
+		$response = $rapiduClient->upload(new UploadServer([
+			'sessionId' => 'a',
+			'serverId' => 'a',
+		]), '/dev/null');
+
+		$this->assertEquals('http://rapidu.net/666/Some.File.rar', $response);
 	}
 
 	/**
