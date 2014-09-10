@@ -62,7 +62,9 @@ class RapiduClient
 	{
 		$command = $this->getClient()->getCommand('FileDetails', ['id' => $fileId]);
 
-		return reset($command->execute());
+		$commandResult = $command->execute();
+
+		return reset($commandResult);
 	}
 
 	/**
