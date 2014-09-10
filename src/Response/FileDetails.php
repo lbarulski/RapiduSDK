@@ -47,7 +47,7 @@ class FileDetails extends BaseArrayResponse
 	 */
 	public function getSize()
 	{
-		return $this->fileSize;
+		return (int) $this->fileSize;
 	}
 
 	/**
